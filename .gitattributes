@@ -1,0 +1,4 @@
+# 保证 gradlew 在 Linux / CI 上可执行（CRLF 会直接报错）
+gradlew text eol=lf
+*.bat text eol=crlf
+*.jar binary

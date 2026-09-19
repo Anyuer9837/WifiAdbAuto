@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F6F8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- ADB 无线调试 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ADB 无线调试"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#1F2328"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="端口 5555，拨动即生效，重启后保持"
+                android:textSize="12sp"
+                android:textColor="#656D76"
+                android:layout_marginTop="4dp"/>
+
+            <Switch
+                android:id="@+id/sw_adb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"/>
+
+            <LinearLayout
+                android:id="@+id/row_cmd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="gone"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/tv_cmd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textColor="#1F6FEB"
+                    android:textIsSelectable="true"/>
+
+                <Button
+                    android:id="@+id/btn_copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minWidth="56dp"
+                    android:minHeight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:stateListAnimator="@null"
+                    android:text="复制"
+                    android:textAllCaps="false"
+                    android:textColor="#1F6FEB"
+                    android:textSize="13sp"
+                    app:backgroundTint="@color/btn_action_tint"
+                    app:cornerRadius="8dp"
+                    app:elevation="0dp"
+                    app:rippleColor="#CFE2FF"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 网页发现服务 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="网页发现服务"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#1F2328"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="端口 9837，电脑上可查 IP、复制命令、改同样的开关"
+                android:textSize="12sp"
+                android:textColor="#656D76"
+                android:layout_marginTop="4dp"/>
+
+            <Switch
+                android:id="@+id/sw_web"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"/>
+
+            <LinearLayout
+                android:id="@+id/row_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:visibility="gone"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:id="@+id/tv_url"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textColor="#1F6FEB"
+                    android:textIsSelectable="true"/>
+
+                <Button
+                    android:id="@+id/btn_open"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minWidth="56dp"
+                    android:minHeight="0dp"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:stateListAnimator="@null"
+                    android:text="打开"
+                    android:textAllCaps="false"
+                    android:textColor="#1F6FEB"
+                    android:textSize="13sp"
+                    app:backgroundTint="@color/btn_action_tint"
+                    app:cornerRadius="8dp"
+                    app:elevation="0dp"
+                    app:rippleColor="#CFE2FF"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- 应用中的遮罩：吃掉点击，避免快速连点并发执行 -->
+    <LinearLayout
+        android:id="@+id/view_blocking"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#B3000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="正在应用…"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
+
+</FrameLayout>
