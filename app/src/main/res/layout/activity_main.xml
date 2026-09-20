@@ -5,11 +5,19 @@
     android:layout_height="match_parent"
     android:background="#F5F6F8">
 
-    <LinearLayout
+    <!-- 小屏机型三张卡片放不下，整体可上下滚动 -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:scrollbarStyle="outsideOverlay"
         android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <!-- ADB 无线调试 -->
         <LinearLayout
@@ -93,7 +101,7 @@
             android:orientation="vertical"
             android:background="@drawable/bg_card"
             android:padding="16dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="12dp">
 
             <TextView
                 android:layout_width="match_parent"
@@ -161,7 +169,87 @@
             </LinearLayout>
         </LinearLayout>
 
+        <!-- 无线调试（系统自带，非 root 也能用）：只给步骤，开关一律去系统设置里做 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="无线调试（非 Root 可用）"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#1F2328"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Android 11+ 系统自带，端口每次随机；本卡片只给步骤，开关请在系统设置里操作"
+                android:textSize="12sp"
+                android:textColor="#656D76"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/tv_wifi_guide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:textColor="#1F2328"
+                android:textIsSelectable="true"
+                android:lineSpacingExtra="3dp"
+                android:layout_marginTop="12dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <Button
+                    android:id="@+id/btn_sys_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:stateListAnimator="@null"
+                    android:text="去开发者选项"
+                    android:textAllCaps="false"
+                    android:textColor="#1F6FEB"
+                    android:textSize="13sp"
+                    app:backgroundTint="@color/btn_action_tint"
+                    app:cornerRadius="8dp"
+                    app:elevation="0dp"
+                    app:rippleColor="#CFE2FF"/>
+
+                <Button
+                    android:id="@+id/btn_guide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:stateListAnimator="@null"
+                    android:text="查看完整步骤"
+                    android:textAllCaps="false"
+                    android:textColor="#1F6FEB"
+                    android:textSize="13sp"
+                    app:backgroundTint="@color/btn_action_tint"
+                    app:cornerRadius="8dp"
+                    app:elevation="0dp"
+                    app:rippleColor="#CFE2FF"/>
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
+    </ScrollView>
 
     <!-- 应用中的遮罩：吃掉点击，避免快速连点并发执行 -->
     <LinearLayout
